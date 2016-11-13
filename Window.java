@@ -21,6 +21,7 @@ public class Window extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	JPanel p1,p2,p3,p4;
 	JButton credits,
+			close,
 			seeds,
 			plant,
 			water,
@@ -56,7 +57,8 @@ public Window() {
 		+ "nutritionist with the Fitness Institute of Texas at The University of Texas at Austin. <br>"; 
 	
 	String tx_income = "<html><br><br><table width='100%'><tbody><tr><td>Estimated Cost</td><td>$700 to $1500 per acre</td></tr>    <tr> <td>Market Potential</td><td> <p>Demand for seedless types increasing.</p></td></tr><tr>      <td>Yield Potential</td><td>10,000 - 70,000 lbs/ac</td> </tr> <tr> <td>Profit Potential</td> <td>$0 to $2,000 per acre</td></tr><tr><td>Adapted Areas</td><td>New Mexico state wide</td></tr></tbody></table></html>";
-    String tx_credits = "<html><br><br><h2 align='center'>Zac Smith<br>NMSU ICT362<br>Fall 2016</h2></html>";
+    String tx_credits = "<html><br><br><br><br><h2 align='center'>Zac Smith<br>NMSU ICT362<br>Fall 2016</h2></html>";
+    
     // JPanels
     p1 = new JPanel();
     p2 = new JPanel(new GridBagLayout());
@@ -68,9 +70,9 @@ public Window() {
     p4.setBackground(new Color(109,110,113));
 
     // JButtons
-
     credits = new JButton("APP CREDITS");
-    // close.addActionListener(this);
+    close = new JButton("Close");
+    close.addActionListener(this);
     seeds = new JButton(" Get Seeds ");
     plant = new JButton("Plant Seeds");
     water = new JButton("     Water     ");
@@ -106,8 +108,9 @@ public Window() {
     gbc.gridy = 6;
     p2.add(health, gbc);
 
-
+    
     p4.add(credits);
+    p4.add(close);
 
     // JLabel
     top = new JLabel("Watermelon Farmer App");
@@ -128,8 +131,10 @@ public Window() {
 
     // Button functions
     
-    /* Action for Income Button */
     
+    
+    
+    /* Action for Income Button */    
     income.addActionListener(new ActionListener() {
     	public void actionPerformed(ActionEvent e) {
     		center.setText(tx_income);
@@ -142,7 +147,14 @@ public Window() {
     		center.setText(tx_health);
     	}
     });
-
+    
+    /* Action for Credits Button */
+    credits.addActionListener(new ActionListener() {
+    	public void actionPerformed(ActionEvent e) {
+    		center.setText(tx_credits);
+    	}
+    });
+    
     // Add panels to JFrame
     add(p1, BorderLayout.NORTH);
     add(p2, BorderLayout.WEST);
@@ -151,13 +163,16 @@ public Window() {
 
   }
 
-
-
-
 @Override
 public void actionPerformed(ActionEvent e) {
-	// TODO Auto-generated method stub
+	String s = e.getActionCommand();
+	if (s.equals("Close")) { System.exit(0); }
 	
 }
+
+
+
+
+
 
 }
