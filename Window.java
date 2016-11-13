@@ -2,11 +2,10 @@ package WatermelonFarmer;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
-
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -19,7 +18,7 @@ import java.awt.Color;
 
 public class Window extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
-	JPanel p1,p2,p3,p4;
+	JPanel 	p1,p2,p3,p4;
 	JButton credits,
 			close,
 			seeds,
@@ -29,10 +28,12 @@ public class Window extends JFrame implements ActionListener {
 			harvest,
 			income,
 			health;
-	JLabel top, 
+	JLabel 	top, 
 			center,
+			lb_seeds,
 			lb_watermelonBenefits;
 	JTextArea tb, textField1, jt;
+	ImageIcon im_seeds;
 	
 public Window() {
     super("Watermelon Farmer App");
@@ -40,7 +41,11 @@ public Window() {
     setSize(800,600);
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     
-    
+    String tx_seeds = "<html><h2 align='center'>Seeds<br><br><img width='400' height='266' src='https://goo.gl/GcYH1f'/></h2></html>";
+    String tx_plant = "<html><h2 align='center'>Plant<br><br><img width='400' height='268' src='https://goo.gl/HXBHdm'/></h2></html>";
+    String tx_water = "<html><h2 align='center'>Water<br><br><img width='400' height='249' src='https://goo.gl/FYImoc'/></h2></html>";
+    String tx_growth = "<html><h2 align='center'>Growth<br><br><img width='400' height='300' src='https://goo.gl/rTMzym'/></h2></html>";
+    String tx_harvest = "<html><h2 align='center'>Harvest<br><br><img width='400' height='300' src='https://goo.gl/XGMN8y'/></h2></html>";
     String tx_health = "<html><br><h1 align='center'>Watermelons!</h1><br>Watermelons are mostly water — about 92 percent — but this <br>" 
 		+ "refreshing fruit is soaked with nutrients. Each juicy bite has significant <br>"
 		+ "levels of vitamins A, B6 and C, lots of lycopene, antioxidants and amino acids. <br>"
@@ -117,7 +122,8 @@ public Window() {
     top.setFont(new Font("Courier", Font.BOLD, 38));
     top.setForeground(Color.WHITE);
     p1.add(top);
-    
+
+   
 
     center = new JLabel("<html><br><br><br><h2 align='center'>Thank you for choosing the <br>NMSU Aggie Watermelon Farmer App</h2></html>");
     center.setFont(new Font("Serif", Font.ITALIC, 16));
@@ -131,8 +137,40 @@ public Window() {
 
     // Button functions
     
+    /* Action for Seeds Button */    
+    seeds.addActionListener(new ActionListener () {
+    	public void actionPerformed(ActionEvent e) {
+    		center.setText(tx_seeds);
+    	}
+    });
     
+    /* Action for Plant Button */  
+    plant.addActionListener(new ActionListener() {
+    	public void actionPerformed(ActionEvent e) {
+    		center.setText(tx_plant);
+    	}
+    });    
     
+    /* Action for Water Button */  
+    water.addActionListener(new ActionListener() {
+    	public void actionPerformed(ActionEvent e) {
+    		center.setText(tx_water);
+    	}
+    });
+    
+    /* Action for Growth Button */  
+    growth.addActionListener(new ActionListener() {
+    	public void actionPerformed(ActionEvent e) {
+    		center.setText(tx_growth);
+    	}
+    });
+        
+    /* Action for Harvest Button */  
+    harvest.addActionListener(new ActionListener() {
+    	public void actionPerformed(ActionEvent e) {
+    		center.setText(tx_harvest);
+    	}
+    });
     
     /* Action for Income Button */    
     income.addActionListener(new ActionListener() {
@@ -173,6 +211,9 @@ public void actionPerformed(ActionEvent e) {
 
 
 
-
+//public static void main(String[] args) {
+//	 Window w = new Window();
+//	 w.setVisible(true);
+//}
 
 }
